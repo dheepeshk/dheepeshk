@@ -1,0 +1,6 @@
+{
+  "name": "Elevate Portfolio",
+  "description": "A premium, futuristic personal brand portfolio with high-impact visual design, glassmorphic UI, rich interactive components, and real-time state for students and creators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
