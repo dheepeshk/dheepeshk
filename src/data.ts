@@ -47,7 +47,7 @@ export const initialPortfolioData: PortfolioData = {
     address: "",
     linkedin: "https://linkedin.com/in/dheepeshk",
     github: "https://github.com/DheepeshK",
-    instagram: "",
+    instagram: "https://instagram.com/dheeps._",
     intro: "Interested in Robotics, Embedded Systems, Product Development, Research & Development, and Entrepreneurship.",
     story: "First-year B.E. Mechatronics Engineering student with interests in Robotics, Embedded Systems, Product Development, Research & Development, and Entrepreneurship. Passionate about applying engineering principles to real-world challenges through innovation, prototyping, and interdisciplinary problem solving. Seeking opportunities to contribute to research-driven and startup-oriented environments while gaining practical industry experience.\n\nAreas of interest: Robotics, Automation, Embedded Systems, Research & Development, Entrepreneurship.\n\nLanguages: Tamil (Native), English (Fluent).\n\nWorkshops & technical exposure: 2-Day Workshop on Critical & Design Thinking (IEF@KEC); Design Thinking and Problem Identification Workshop (TBI@KEC).",
     visionStatement: "",

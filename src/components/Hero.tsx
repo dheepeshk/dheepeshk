@@ -113,7 +113,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
           {hasJourney && (
             <button
               onClick={() => handleScrollTo("journey")}
-              className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 active:scale-95 transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
+              className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 active:scale-95 transition-all shadow-md shadow-emerald-500/10 cursor-pointer hover-pop hover-pop-button"
             >
               <span>View My Journey</span>
               <ArrowRight className="w-4 h-4" />
@@ -123,7 +123,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
           {(hasProjects || subTaglines.length > 0) && (
             <button
               onClick={() => handleScrollTo(hasProjects ? "projects" : "skills")}
-              className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-850 hover:text-white border border-zinc-800 hover:border-zinc-700 active:scale-95 transition-all cursor-pointer shadow-sm"
+              className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-850 hover:text-white border border-zinc-800 hover:border-zinc-700 active:scale-95 transition-all cursor-pointer shadow-sm hover-pop hover-pop-button"
             >
               <Briefcase className="w-4 h-4 text-emerald-400" />
               <span>{hasProjects ? "Explore Projects" : "View Skills"}</span>
@@ -132,7 +132,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
 
           <button
             onClick={() => handleScrollTo("contact")}
-            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-zinc-400 bg-transparent hover:text-white border border-transparent hover:border-zinc-800 transition-all cursor-pointer"
+            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold text-zinc-400 bg-transparent hover:text-white border border-transparent hover:border-zinc-800 transition-all cursor-pointer hover-pop-soft"
           >
             <span>Contact Me</span>
           </button>
@@ -150,7 +150,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-zinc-900 border border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all active:scale-90"
+              className="p-2.5 rounded-full bg-zinc-900 border border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all active:scale-90 hover-pop-soft hover-pop-icon"
               title="GitHub Profile"
             >
               <Github className="w-4 h-4" />
@@ -161,7 +161,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-zinc-900 border border-zinc-850 text-zinc-400 hover:text-emerald-400 hover:border-zinc-700 transition-all active:scale-90"
+              className="p-2.5 rounded-full bg-zinc-900 border border-zinc-850 text-zinc-400 hover:text-emerald-400 hover:border-zinc-700 transition-all active:scale-90 hover-pop-soft hover-pop-icon"
               title="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4" />
@@ -176,7 +176,7 @@ export default function Hero({ name, tagline, subTaglines, intro, github, linked
       </div>
 
       {/* Floating Sparkle Elements */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 text-zinc-500 cursor-pointer opacity-80 hover:opacity-100 transition-opacity" onClick={() => handleScrollTo("about")}>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 text-zinc-500 cursor-pointer opacity-80 hover:opacity-100 transition-opacity hover-pop-soft" onClick={() => handleScrollTo("about")}>
         <span className="text-[10px] font-mono tracking-widest uppercase">Scroll Down</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
       </div>

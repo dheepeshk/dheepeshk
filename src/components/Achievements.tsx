@@ -43,13 +43,13 @@ export default function Achievements({ achievements }: AchievementsProps) {
   };
 
   return (
-    <section id="achievements" className="py-24 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
+    <section id="achievements" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
       <div className="absolute left-0 bottom-1/3 w-80 h-80 bg-rose-500/5 rounded-full filter blur-[95px]"></div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 text-left" id="achievements-heading">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left" id="achievements-heading">
           <div>
             <div className="inline-flex items-center space-x-2 text-rose-455 font-mono text-xs tracking-wider uppercase mb-3">
               <Award className="w-3.5 h-3.5" />
@@ -72,7 +72,7 @@ export default function Achievements({ achievements }: AchievementsProps) {
             <button
               key={sub.value}
               onClick={() => setSelectedSub(sub.value)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer hover-pop-soft ${
                 selectedSub === sub.value
                   ? "bg-zinc-900 text-rose-400 border border-zinc-800"
                   : "text-zinc-500 hover:text-zinc-350 bg-transparent border border-transparent"
@@ -88,7 +88,7 @@ export default function Achievements({ achievements }: AchievementsProps) {
           {filteredAchievements.map((item) => (
             <div
               key={item.id}
-              className={`p-6 rounded-2xl bg-zinc-900/35 border border-zinc-855 ${getBorderColor(item.category)} transition-all flex items-start space-x-4 relative group shadow-sm`}
+              className={`p-6 rounded-2xl bg-zinc-900/35 border border-zinc-855 ${getBorderColor(item.category)} transition-all flex items-start space-x-4 relative group shadow-sm hover-pop hover-pop-card`}
             >
               {/* Badge Visual */}
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-zinc-950 border border-zinc-850 flex items-center justify-center">

@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { initialPortfolioData, PortfolioData } from "./data";
-import { Skill, Project, MemoryItem, Message, NavigationItem } from "./types";
+import { NavigationItem } from "./types";
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -22,42 +22,8 @@ import Contact from "./components/Contact";
 import ResumeViewer from "./components/ResumeViewer";
 
 export default function App() {
-  const [portfolio, setPortfolio] = useState<PortfolioData>(initialPortfolioData);
-  const [localMessages, setLocalMessages] = useState<Message[]>([]);
+  const [portfolio] = useState<PortfolioData>(initialPortfolioData);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-
-  const handleAddNewSkill = (newSkill: Skill) => {
-    setPortfolio((prev) => ({
-      ...prev,
-      skills: [newSkill, ...prev.skills]
-    }));
-  };
-
-  const handleUpdateSkillLevel = (skillName: string, newLevel: number) => {
-    setPortfolio((prev) => ({
-      ...prev,
-      skills: prev.skills.map((skill) => (skill.name === skillName ? { ...skill, level: newLevel } : skill))
-    }));
-  };
-
-  const handleAddNewProject = (newProject: Project) => {
-    setPortfolio((prev) => ({
-      ...prev,
-      projects: [newProject, ...prev.projects]
-    }));
-  };
-
-  const handleAddNewMemory = (newMemory: MemoryItem) => {
-    setPortfolio((prev) => ({
-      ...prev,
-      gallery: [newMemory, ...prev.gallery]
-    }));
-  };
-
-  const handleAddNewMessage = (newMessage: Message) => {
-    setLocalMessages((prev) => [newMessage, ...prev]);
-  };
 
   const hasJourney = portfolio.timeline.length > 0;
   const hasSkills = portfolio.skills.length > 0;
@@ -92,8 +58,6 @@ export default function App() {
         name={portfolio.personal.name}
         navigationItems={navigationItems}
         onOpenResume={() => setIsResumeOpen(true)}
-        isDark={isDark}
-        setIsDark={setIsDark}
       />
 
       <main className="relative">
@@ -120,15 +84,12 @@ export default function App() {
         {hasSkills && (
           <SkillsGrid
             skills={portfolio.skills}
-            onAddNewSkill={handleAddNewSkill}
-            onUpdateSkillLevel={handleUpdateSkillLevel}
           />
         )}
 
         {hasProjects && (
           <Projects
             projects={portfolio.projects}
-            onAddNewProject={handleAddNewProject}
           />
         )}
 
@@ -148,7 +109,6 @@ export default function App() {
         {hasGallery && (
           <Gallery
             galleryItems={portfolio.gallery}
-            onAddNewMemory={handleAddNewMemory}
           />
         )}
 
@@ -160,8 +120,6 @@ export default function App() {
           github={portfolio.personal.github}
           linkedin={portfolio.personal.linkedin}
           instagram={portfolio.personal.instagram}
-          localMessages={localMessages}
-          onAddNewMessage={handleAddNewMessage}
         />
       </main>
 
@@ -170,7 +128,7 @@ export default function App() {
           <p>© 2026 {portfolio.personal.name}. All rights reserved.</p>
           <button
             onClick={() => setIsResumeOpen(true)}
-            className="hover:text-emerald-400 transition-colors cursor-pointer"
+            className="hover:text-emerald-400 transition-colors cursor-pointer hover-pop-soft"
           >
             [ DOWNLOAD RESUME PDF ]
           </button>

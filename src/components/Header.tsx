@@ -7,11 +7,9 @@ interface HeaderProps {
   name: string;
   navigationItems: NavigationItem[];
   onOpenResume: () => void;
-  isDark: boolean;
-  setIsDark: (dark: boolean) => void;
 }
 
-export default function Header({ name, navigationItems, onOpenResume, isDark, setIsDark }: HeaderProps) {
+export default function Header({ name, navigationItems, onOpenResume }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -68,7 +66,7 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         <div
-          className="flex items-center space-x-2 cursor-pointer group"
+          className="flex items-center space-x-2 cursor-pointer group hover-pop-soft"
           onClick={() => scrollToSection("home")}
           id="brand-logo"
         >
@@ -88,7 +86,7 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
               <button
                 key={item.href}
                 onClick={() => scrollToSection(id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all hover-pop-soft ${
                   isActive
                     ? "text-emerald-300 bg-emerald-500/10 border border-emerald-500/30"
                     : "text-zinc-400 hover:text-white hover:bg-zinc-800/40 border border-transparent"
@@ -103,7 +101,7 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
         <div className="hidden sm:flex items-center space-x-3" id="header-ctas">
           <button
             onClick={onOpenResume}
-            className="flex items-center space-x-1.5 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-zinc-900 hover:bg-zinc-850 hover:border-zinc-700 text-zinc-200 border border-zinc-800 transition-all shadow-md shadow-black/10 group active:scale-95"
+            className="flex items-center space-x-1.5 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-zinc-900 hover:bg-zinc-850 hover:border-zinc-700 text-zinc-200 border border-zinc-800 transition-all shadow-md shadow-black/10 group active:scale-95 hover-pop hover-pop-button"
             id="nav-resume-btn"
           >
             <Download className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-y-0.5 transition-transform" />
@@ -114,7 +112,7 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
         <div className="flex items-center space-x-3 lg:hidden" id="mobile-util-controls">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-350 hover:text-white"
+            className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-350 hover:text-white hover-pop-soft hover-pop-icon"
             aria-label="Toggle Menu"
             id="mobile-menu-toggle"
           >
@@ -142,7 +140,7 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
                     <button
                       key={item.href}
                       onClick={() => scrollToSection(id)}
-                      className={`px-4 py-3 rounded-xl text-left text-xs font-medium tracking-wide transition-all ${
+                      className={`px-4 py-3 rounded-xl text-left text-xs font-medium tracking-wide transition-all hover-pop-soft ${
                         isActive
                           ? "text-emerald-300 bg-emerald-500/10 border border-emerald-500/20"
                           : "text-zinc-400 bg-zinc-900/40 border border-zinc-800/40 hover:text-white hover:bg-zinc-800"
@@ -160,10 +158,10 @@ export default function Header({ name, navigationItems, onOpenResume, isDark, se
                     setIsOpen(false);
                     onOpenResume();
                   }}
-                  className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl text-xs font-bold bg-zinc-900 border border-zinc-800 text-white"
+                  className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl text-xs font-bold bg-zinc-900 border border-zinc-800 text-white hover-pop hover-pop-button"
                 >
                   <Download className="w-4 h-4 text-emerald-400" />
-                  <span>Interactive Resume Workspace</span>
+                  <span>View Resume</span>
                 </button>
               </div>
             </div>

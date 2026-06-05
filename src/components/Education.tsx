@@ -15,13 +15,13 @@ interface EducationProps {
 
 export default function Education({ education }: EducationProps) {
   return (
-    <section id="education" className="py-24 bg-zinc-950 relative border-t border-zinc-900">
+    <section id="education" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900">
       <div className="absolute right-0 bottom-1/4 w-80 h-80 bg-teal-500/5 rounded-full filter blur-[100px]"></div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col mb-16 text-left" id="education-heading">
+        <div className="flex flex-col mb-12 text-left" id="education-heading">
           <div className="inline-flex items-center space-x-2 text-emerald-400 font-mono text-xs tracking-wider uppercase mb-3">
             <GraduationCap className="w-3.5 h-3.5" />
             <span>Academic Anchorage</span>
@@ -36,7 +36,7 @@ export default function Education({ education }: EducationProps) {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-stretch" id="education-grid">
           
           {/* Institution card & GPA badge */}
-          <div className="lg:col-span-2 p-6 md:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-800 transition-all flex flex-col justify-between relative group">
+          <div className="lg:col-span-2 p-6 md:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-800 transition-all flex flex-col justify-between relative group hover-pop hover-pop-card">
             {/* Top glass lighting */}
             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/0 via-emerald-500/0 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
 

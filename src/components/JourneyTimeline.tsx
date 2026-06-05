@@ -63,7 +63,7 @@ export default function JourneyTimeline({ events }: JourneyTimelineProps) {
   };
 
   return (
-    <section id="journey" className="py-24 bg-zinc-950 relative border-t border-zinc-900">
+    <section id="journey" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900">
       
       {/* Visual background lights */}
       <div className="absolute left-0 top-[20%] w-72 h-72 bg-indigo-500/5 rounded-full filter blur-[90px]"></div>
@@ -71,7 +71,7 @@ export default function JourneyTimeline({ events }: JourneyTimelineProps) {
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 text-left" id="journey-header">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left" id="journey-header">
           <div>
             <div className="inline-flex items-center space-x-2 text-indigo-400 font-mono text-xs tracking-wider uppercase mb-3">
               <History className="w-3.5 h-3.5" />
@@ -89,12 +89,12 @@ export default function JourneyTimeline({ events }: JourneyTimelineProps) {
         </div>
 
         {/* Filter Navigation */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 pb-3 border-b border-zinc-900" id="journey-filters">
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-3 border-b border-zinc-900" id="journey-filters">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setSelectedFilter(cat.value)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium tracking-wide transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium tracking-wide transition-all cursor-pointer hover-pop-soft ${
                 selectedFilter === cat.value
                   ? "bg-zinc-850 text-white shadow-md border border-zinc-700"
                   : "text-zinc-500 hover:text-zinc-300 border border-transparent"
@@ -133,7 +133,7 @@ export default function JourneyTimeline({ events }: JourneyTimelineProps) {
                 </div>
 
                 {/* Journey Detail Card */}
-                <div className={`p-6 rounded-2xl bg-zinc-900/40 border border-zinc-855 hover:border-zinc-800 transition-all shadow-sm flex flex-col space-y-3 relative group`}>
+                <div className={`p-6 rounded-2xl bg-zinc-900/40 border border-zinc-855 hover:border-zinc-800 transition-all shadow-sm flex flex-col space-y-3 relative group hover-pop hover-pop-card`}>
                   
                   {/* Category Pill + Mobile Period Indicator */}
                   <div className="flex flex-wrap items-center justify-between gap-2">

@@ -10,13 +10,13 @@ interface VisionProps {
 
 export default function Vision({ visionStatement, future1Year, future3Year, future5Year }: VisionProps) {
   return (
-    <section id="vision" className="py-24 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
+    <section id="vision" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
       <div className="absolute right-0 bottom-1/4 w-[400px] h-[400px] bg-indigo-500/5 rounded-full filter blur-[110px]"></div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col mb-16 text-left" id="vision-heading">
+        <div className="flex flex-col mb-12 text-left" id="vision-heading">
           <div className="inline-flex items-center space-x-2 text-indigo-400 font-mono text-xs tracking-wider uppercase mb-3">
             <Compass className="w-3.5 h-3.5" />
             <span>Futuristic Forecasts</span>
@@ -28,7 +28,7 @@ export default function Vision({ visionStatement, future1Year, future3Year, futu
         </div>
 
         {/* Vision Statement block */}
-        <div className="p-6 md:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-850 shadow-inner mb-12 relative overflow-hidden group">
+        <div className="p-6 md:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-850 shadow-inner mb-10 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 text-indigo-500/10 opacity-30 select-none">
             <Lightbulb className="w-24 h-24" />
           </div>
@@ -47,7 +47,7 @@ export default function Vision({ visionStatement, future1Year, future3Year, futu
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="vision-horizons">
           
           {/* Year 1 */}
-          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all flex flex-col justify-between space-y-6 relative group">
+          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all flex flex-col justify-between space-y-6 relative group hover-pop hover-pop-card">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold tracking-widest text-teal-400 uppercase">
@@ -68,7 +68,7 @@ export default function Vision({ visionStatement, future1Year, future3Year, futu
           </div>
 
           {/* Year 3 */}
-          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-805 transition-all flex flex-col justify-between space-y-6 relative group">
+          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-805 transition-all flex flex-col justify-between space-y-6 relative group hover-pop hover-pop-card">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold tracking-widest text-indigo-400 uppercase">
@@ -89,7 +89,7 @@ export default function Vision({ visionStatement, future1Year, future3Year, futu
           </div>
 
           {/* Year 5 */}
-          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-805 transition-all flex flex-col justify-between space-y-6 relative group">
+          <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-805 transition-all flex flex-col justify-between space-y-6 relative group hover-pop hover-pop-card">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold tracking-widest text-pink-400 uppercase">

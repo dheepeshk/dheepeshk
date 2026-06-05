@@ -8,13 +8,13 @@ interface ExperienceProps {
 
 export default function ExperienceSection({ experiences }: ExperienceProps) {
   return (
-    <section id="experience" className="py-24 bg-zinc-950 relative border-t border-zinc-900">
+    <section id="experience" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900">
       <div className="absolute right-0 top-1/3 w-80 h-80 bg-emerald-500/5 rounded-full filter blur-[100px]"></div>
 
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 text-left" id="experience-heading">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left" id="experience-heading">
           <div>
             <div className="inline-flex items-center space-x-2 text-emerald-450 font-mono text-xs tracking-wider uppercase mb-3">
               <Briefcase className="w-3.5 h-3.5" />
@@ -36,7 +36,7 @@ export default function ExperienceSection({ experiences }: ExperienceProps) {
           {experiences.map((exp) => (
             <div
               key={exp.id}
-              className="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all shadow-sm group"
+              className="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all shadow-sm group hover-pop hover-pop-card"
             >
               
               {/* Header section (Role, Company, duration) */}

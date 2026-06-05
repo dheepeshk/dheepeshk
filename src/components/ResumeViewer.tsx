@@ -36,10 +36,10 @@ export default function ResumeViewer({ isOpen, onClose, portfolio }: ResumeViewe
             <div className="px-6 py-4 border-b border-zinc-850 flex items-center justify-between bg-zinc-900/60 z-10">
               <div className="space-y-0.5">
                 <h3 className="text-base sm:text-lg font-sans font-extrabold text-white">
-                  Interactive Resume Workspace
+                  Resume Preview
                 </h3>
                 <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                  Preview, Customize & Export Dynamic Printable Sheet
+                  Preview and export a printable resume
                 </p>
               </div>
 
@@ -47,7 +47,7 @@ export default function ResumeViewer({ isOpen, onClose, portfolio }: ResumeViewe
                 <button
                   onClick={handlePrint}
                   className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-800 hover:bg-zinc-750 text-zinc-200 border border-zinc-700 hover:border-zinc-650 transition-all cursor-pointer active:scale-95"
-                  title="Trigger System Print Dialog"
+                  title="Open print dialog"
                   id="print-resume-btn"
                 >
                   <Printer className="w-3.5 h-3.5 text-emerald-450" />
@@ -57,7 +57,7 @@ export default function ResumeViewer({ isOpen, onClose, portfolio }: ResumeViewe
                 <button
                   onClick={onClose}
                   className="p-1.5 rounded-lg bg-zinc-800 border border-zinc-750 text-zinc-400 hover:text-white hover:border-zinc-700"
-                  title="Close Workspace"
+                  title="Close Resume Preview"
                   id="close-resume-btn"
                 >
                   <X className="w-4 h-4" />
@@ -250,8 +250,8 @@ export default function ResumeViewer({ isOpen, onClose, portfolio }: ResumeViewe
                 </div>
 
                 <div className="border-t border-zinc-200 pt-3 mt-6 text-center text-[8px] font-mono text-zinc-400 uppercase tracking-widest flex items-center justify-between">
-                  <span>Secured and validated by owner on local slate</span>
-                  <span>Portfolio compiled automatically</span>
+                  <span>Resume generated from portfolio content</span>
+                  <span>Prepared for sharing and print</span>
                 </div>
               </div>
             </div>

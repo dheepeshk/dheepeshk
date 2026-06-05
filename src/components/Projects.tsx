@@ -1,27 +1,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Project } from "../types";
-import { ExternalLink, Github, Search, PlusCircle, Sparkles, AlertCircle, TrendingUp, X } from "lucide-react";
+import { ExternalLink, Github, Search, Sparkles, AlertCircle, TrendingUp, X } from "lucide-react";
 
 interface ProjectsProps {
   projects: Project[];
-  onAddNewProject: (newProject: Project) => void;
 }
 
-export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
+export default function Projects({ projects }: ProjectsProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState<string>("all");
   const [activeDetailProject, setActiveDetailProject] = useState<Project | null>(null);
-
-  // States for adding a project via GUI
-  const [showAddProject, setShowAddProject] = useState(false);
-  const [newTitle, setNewTitle] = useState("");
-  const [newDesc, setNewDesc] = useState("");
-  const [newProblem, setNewProblem] = useState("");
-  const [newImpact, setNewImpact] = useState("");
-  const [newTagsStr, setNewTagsStr] = useState("");
-  const [newGithub, setNewGithub] = useState("");
-  const [newUrl, setNewUrl] = useState("");
 
   // Gather unique tags
   const allTags = ["all", ...Array.from(new Set(projects.flatMap(p => p.tags)))];
@@ -36,46 +25,14 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
     return matchesSearch && matchesTag;
   });
 
-  const handleCreateProject = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newTitle.trim() || !newDesc.trim()) return;
-
-    const tagsArray = newTagsStr
-      ? newTagsStr.split(",").map(t => t.trim()).filter(Boolean)
-      : ["React", "TypeScript", "Vite"];
-
-    onAddNewProject({
-      id: "p_custom_" + Date.now(),
-      title: newTitle.trim(),
-      description: newDesc.trim(),
-      problem: newProblem.trim() || "Collaborative structural alignment was slow.",
-      impact: newImpact.trim() || "Cut alignment timeline by nearly 25%.",
-      tags: tagsArray,
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-      featured: false,
-      github: newGithub.trim() || undefined,
-      link: newUrl.trim() || undefined
-    });
-
-    // Reset fields
-    setNewTitle("");
-    setNewDesc("");
-    setNewProblem("");
-    setNewImpact("");
-    setNewTagsStr("");
-    setNewGithub("");
-    setNewUrl("");
-    setShowAddProject(false);
-  };
-
   return (
-    <section id="projects" className="py-24 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
+    <section id="projects" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
       <div className="absolute right-0 top-[15%] w-80 h-80 bg-cyan-550/5 rounded-full filter blur-[90px]"></div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 text-left" id="projects-heading">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left" id="projects-heading">
           <div>
             <div className="inline-flex items-center space-x-2 text-emerald-450 font-mono text-xs tracking-wider uppercase mb-3">
               <Sparkles className="w-3.5 h-3.5" />
@@ -105,23 +62,15 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
             />
           </div>
 
-          <button
-            onClick={() => setShowAddProject(!showAddProject)}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-medium text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 hover:bg-emerald-500/10 cursor-pointer"
-            id="toggle-project-form-btn"
-          >
-            <PlusCircle className="w-4 h-4" />
-            <span>{showAddProject ? "Hide Lab Panel" : "Register Live Custom Work"}</span>
-          </button>
         </div>
 
         {/* Project Tags Sub-Filters */}
-        <div className="flex flex-wrap gap-1.5 mb-12 max-h-24 overflow-y-auto" id="projects-tag-filters">
+        <div className="flex flex-wrap gap-1.5 mb-10 max-h-24 overflow-y-auto" id="projects-tag-filters">
           {allTags.map(tag => (
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1 rounded-md text-[10px] font-mono font-medium uppercase tracking-wider cursor-pointer ${
+              className={`px-3 py-1 rounded-md text-[10px] font-mono font-medium uppercase tracking-wider cursor-pointer hover-pop-soft ${
                 selectedTag === tag
                   ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
                   : "text-zinc-500 hover:text-zinc-350 bg-zinc-900/40 border border-transparent"
@@ -131,110 +80,6 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
             </button>
           ))}
         </div>
-
-        {/* Add Project GUI */}
-        <AnimatePresence>
-          {showAddProject && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              className="mb-12 p-6 rounded-2xl bg-zinc-900/40 border border-zinc-855"
-              id="project-add-form"
-            >
-              <form onSubmit={handleCreateProject} className="space-y-4">
-                <h4 className="text-sm font-sans font-bold text-white border-b border-zinc-850 pb-2">
-                  Launch Interactive Lab Prototype
-                </h4>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">Project Title</label>
-                    <input
-                      type="text" required placeholder="e.g. Athena Engine"
-                      value={newTitle} onChange={e => setNewTitle(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">Technologies (comma separated)</label>
-                    <input
-                      type="text" placeholder="e.g. Next.js, WebGL, Tailwind, Node"
-                      value={newTagsStr} onChange={e => setNewTagsStr(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-[10px] font-mono text-zinc-550 uppercase">Intro Overview</label>
-                  <textarea
-                    rows={2} required placeholder="High impact summarizing line defining scope."
-                    value={newDesc} onChange={e => setNewDesc(e.target.value)}
-                    className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">The Target Challenge / Problem Solved</label>
-                    <input
-                      type="text" placeholder="Explain the specific user friction mapped."
-                      value={newProblem} onChange={e => setNewProblem(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">The Realized Metric / Impact</label>
-                    <input
-                      type="text" placeholder="Quantifiable metrics achieved by deploying this solution."
-                      value={newImpact} onChange={e => setNewImpact(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">GitHub Repo Link</label>
-                    <input
-                      type="url" placeholder="https://github.com/..."
-                      value={newGithub} onChange={e => setNewGithub(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="block text-[10px] font-mono text-zinc-550 uppercase">Live Demo Link</label>
-                    <input
-                      type="url" placeholder="https://..."
-                      value={newUrl} onChange={e => setNewUrl(e.target.value)}
-                      className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 focus:border-emerald-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-2 flex justify-end space-x-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowAddProject(false)}
-                    className="px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-950 text-zinc-400 border border-zinc-800 hover:text-white"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white"
-                  >
-                    Register Lab Project
-                  </button>
-                </div>
-              </form>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Project Output Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
@@ -246,7 +91,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="group flex flex-col h-full rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all overflow-hidden relative"
+                className="group flex flex-col h-full rounded-2xl bg-zinc-900/30 border border-zinc-855 hover:border-zinc-800 transition-all overflow-hidden relative hover-pop hover-pop-card"
               >
                 {/* Visual Glass Header with Cover Image */}
                 <div className="relative h-48 w-full overflow-hidden bg-zinc-950">
@@ -304,7 +149,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                           href={p.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 rounded bg-zinc-950 border border-zinc-850 text-zinc-500 hover:text-white transition-all"
+                          className="p-1.5 rounded bg-zinc-950 border border-zinc-850 text-zinc-500 hover:text-white transition-all hover-pop-soft hover-pop-icon"
                           title="View Repository"
                         >
                           <Github className="w-3.5 h-3.5" />
@@ -315,7 +160,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                           href={p.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 rounded bg-zinc-950 border border-zinc-850 text-zinc-500 hover:text-emerald-400 shortcut-link"
+                          className="p-1.5 rounded bg-zinc-950 border border-zinc-850 text-zinc-500 hover:text-emerald-400 shortcut-link hover-pop-soft hover-pop-icon"
                           title="Launch Dynamic Demo"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -357,7 +202,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                 />
                 <button
                   onClick={() => setActiveDetailProject(null)}
-                  className="absolute top-4 right-4 p-1.5 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white"
+                  className="absolute top-4 right-4 p-1.5 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white hover-pop-soft hover-pop-icon"
                   title="Close Spec"
                 >
                   <X className="w-4 h-4" />
@@ -421,7 +266,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                         href={activeDetailProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-950 border border-zinc-800 text-zinc-300 hover:text-white"
+                        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-950 border border-zinc-800 text-zinc-300 hover:text-white hover-pop-soft hover-pop-button"
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>Repo</span>
@@ -432,7 +277,7 @@ export default function Projects({ projects, onAddNewProject }: ProjectsProps) {
                         href={activeDetailProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-zinc-950 font-bold"
+                        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-zinc-950 font-bold hover-pop hover-pop-button"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                         <span>Demo</span>

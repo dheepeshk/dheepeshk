@@ -8,7 +8,7 @@ interface AboutProps {
 
 export default function About({ story, name }: AboutProps) {
   return (
-    <section id="about" className="py-24 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
+    <section id="about" className="py-18 md:py-20 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden">
       <div className="absolute right-0 top-1/4 w-80 h-80 bg-emerald-500/5 rounded-full filter blur-[80px]"></div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
